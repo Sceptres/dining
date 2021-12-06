@@ -1,5 +1,8 @@
 package com.aaa.dining.entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 
@@ -9,65 +12,33 @@ public class Restaurant {
 
     // Id
     @Id
+    @Getter
+    @Setter
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
     // Restaurant name column
+    @Getter
+    @Setter
     @Column(name="NAME")
     private String name;
 
     // Allergy rating fields
     // Peanut allergy rating
+    @Getter
+    @Setter
     @Column(name="PEANUT")
     private Float peanut;
 
     // Egg allergy rating
+    @Getter
+    @Setter
     @Column(name="EGG")
     private Float egg;
 
     //Dairy allergy rating
+    @Getter
+    @Setter
     @Column(name="DAIRY")
     private Float dairy;
-
-    // Instance field getter and setter methods
-
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Float getPeanut() {
-        return this.peanut;
-    }
-
-    public void setPeanut(Float peanut) {
-        this.peanut = peanut;
-    }
-
-    public Float getEgg() {
-        return this.egg;
-    }
-
-    public void setEgg(Float egg) {
-        this.egg = egg;
-    }
-
-    public Float getDairy() {
-        return this.dairy;
-    }
-
-    public void setDairy(Float dairy) {
-        this.dairy = dairy;
-    }
 }

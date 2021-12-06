@@ -52,4 +52,9 @@ public class DiningReview {
     @Setter
     @Column(name="COMMENT")
     private String comment;
+
+    @Getter
+    @Setter
+    @Column(name="STATUS")
+    private Boolean status;
 }

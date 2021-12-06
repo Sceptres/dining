@@ -10,24 +10,24 @@ public class Restaurant {
     // Id
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    Long id;
+    private Long id;
 
     // Restaurant name column
     @Column(name="NAME")
-    String name;
+    private String name;
 
     // Allergy rating fields
     // Peanut allergy rating
     @Column(name="PEANUT")
-    Float peanut;
+    private Float peanut;
 
     // Egg allergy rating
     @Column(name="EGG")
-    Float egg;
+    private Float egg;
 
     //Dairy allergy rating
     @Column(name="DAIRY")
-    Float dairy;
+    private Float dairy;
 
     // Instance field getter and setter methods
 

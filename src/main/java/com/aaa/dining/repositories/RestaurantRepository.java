@@ -5,8 +5,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface RestaurantRepository extends CrudRepository<Restaurant, Integer> {
+    Optional<Restaurant> findById(Long id);
     boolean existsRestaurantByNameAndZipcode(String name, String zipcode);
 
     @Query(value="SELECT r FROM Restaurant r WHERE r.zipcode=?1 AND r.peanut IS NOT NULL AND r.egg IS NOT NULL and r.dairy IS NOT NULL " +

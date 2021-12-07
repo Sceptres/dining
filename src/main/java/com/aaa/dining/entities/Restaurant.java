@@ -23,6 +23,24 @@ public class Restaurant {
     @Column(name="NAME")
     private String name;
 
+    // The restaurants city
+    @Getter
+    @Setter
+    @Column(name="CITY")
+    private String city;
+
+    // The restaurants state
+    @Getter
+    @Setter
+    @Column(name="STATE")
+    private String state;
+
+    // The restaurants zipcode
+    @Getter
+    @Setter
+    @Column(name="ZIPCODE")
+    private String zipcode;
+
     // Allergy rating fields
     // Peanut allergy rating
     @Getter

@@ -1,5 +1,6 @@
 package com.aaa.dining.entities;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,6 +9,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="RESTAURANTS")
+@JsonInclude(value= JsonInclude.Include.NON_NULL)
 public class Restaurant {
 
     // Id

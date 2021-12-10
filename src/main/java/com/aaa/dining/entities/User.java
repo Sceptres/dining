@@ -44,13 +44,13 @@ public class User {
     @Getter
     @Setter
     @Column(name="PEANUT")
-    private Boolean isPeanutAllergy;
+    private Boolean isPeanutAllergic;
 
     // Is the user interested in egg allergies
     @Getter
     @Setter
     @Column(name="EGG")
-    private Boolean isEggAllergy;
+    private Boolean isEggAllergic;
 
     // Is the user interested in dairy allergies
     @Getter

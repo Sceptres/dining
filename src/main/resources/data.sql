@@ -1,4 +1,5 @@
 -- Data gathered from https://en.wikipedia.org/wiki/List_of_restaurant_chains_in_the_United_States
+-- Restaurant data
 INSERT INTO RESTAURANTS (CITY, DAIRY, EGG, NAME, PEANUT, STATE, ZIPCODE) VALUES ('Salt Lake County', NULL, NULL, 'Cupbop', NULL, 'Utah', 'F6I 2D0');
 INSERT INTO RESTAURANTS (CITY, DAIRY, EGG, NAME, PEANUT, STATE, ZIPCODE) VALUES ('Quezon City', NULL, NULL, 'Jollibee', NULL, 'Philippines', 'N4Z 6K4');
 INSERT INTO RESTAURANTS (CITY, DAIRY, EGG, NAME, PEANUT, STATE, ZIPCODE) VALUES ('Honolulu', NULL, NULL, 'L&L Hawaiian Barbecue', NULL, 'Hawaii', 'L7H 7O3');
@@ -55,3 +56,7 @@ INSERT INTO RESTAURANTS (CITY, DAIRY, EGG, NAME, PEANUT, STATE, ZIPCODE) VALUES 
 INSERT INTO RESTAURANTS (CITY, DAIRY, EGG, NAME, PEANUT, STATE, ZIPCODE) VALUES ('Lima', NULL, NULL, 'Lee''s Famous Recipe Chicken', NULL, 'Ohio', 'R6K 4D6');
 INSERT INTO RESTAURANTS (CITY, DAIRY, EGG, NAME, PEANUT, STATE, ZIPCODE) VALUES ('Los Angeles', NULL, NULL, 'Louisiana Famous Fried Chicken', NULL, 'California', 'F1B 5A1');
 INSERT INTO RESTAURANTS (CITY, DAIRY, EGG, NAME, PEANUT, STATE, ZIPCODE) VALUES ('Mississauga', NULL, NULL, 'Shawarma Royale', NULL, 'Ontario', 'J0G 7P2');
+
+
+-- User data
+INSERT INTO USER (CITY, DAIRY, EGG, PEANUT, NAME, STATE, ZIPCODE) VALUES ('Milton', false, false, false, 'Sceptres', 'Ontario', 'S5D 6A4')

@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Objects;
 import java.util.Optional;
 
 @RestController
@@ -32,5 +33,25 @@ public class RestaurantController {
         if (restaurantOptional.isEmpty()) return new ResponseEntity<Restaurant>(HttpStatus.NOT_FOUND);
 
         return new ResponseEntity<Restaurant>(restaurantOptional.get(), HttpStatus.OK);
+    }
+
+    // Adds a new Restaurant to the database
+    @PostMapping(path="/new")
+    public ResponseEntity<Restaurant> createRestaurant(@RequestBody Restaurant restaurant) {
+        // Is the input missing any required information?
+        if (
+            Objects.isNull(restaurant.getName()) || Objects.isNull(restaurant.getCity()) ||
+            Objects.isNull(restaurant.getState()) || Objects.isNull(restaurant.getZipcode())
+        ) {
+            return new ResponseEntity<Restaurant>(HttpStatus.BAD_REQUEST);
+        }
+
+        // Does the restaurant already exist?
+        if (this.restaurantRepository.existsRestaurantByNameAndZipcode(restaurant.getName(), restaurant.getZipcode())) {
+            return new ResponseEntity<Restaurant>(HttpStatus.CONFLICT);
+        }
+
+        // Save the new restaurant
+        return new ResponseEntity<Restaurant>(this.restaurantRepository.save(restaurant), HttpStatus.CREATED);
     }
 }

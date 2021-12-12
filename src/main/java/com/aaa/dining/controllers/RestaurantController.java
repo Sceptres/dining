@@ -39,9 +39,12 @@ public class RestaurantController {
     @PostMapping(path="/new")
     public ResponseEntity<Restaurant> createRestaurant(@RequestBody Restaurant restaurant) {
         // Is the input missing any required information?
+        // Does the information have data that should not be set? ie allergy fields
         if (
             Objects.isNull(restaurant.getName()) || Objects.isNull(restaurant.getCity()) ||
-            Objects.isNull(restaurant.getState()) || Objects.isNull(restaurant.getZipcode())
+            Objects.isNull(restaurant.getState()) || Objects.isNull(restaurant.getZipcode()) ||
+            Objects.nonNull(restaurant.getPeanut()) || Objects.nonNull(restaurant.getEgg()) ||
+            Objects.nonNull(restaurant.getDairy())
         ) {
             return new ResponseEntity<Restaurant>(HttpStatus.BAD_REQUEST);
         }

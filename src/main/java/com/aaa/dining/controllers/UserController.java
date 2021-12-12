@@ -4,11 +4,9 @@ import com.aaa.dining.entities.User;
 import com.aaa.dining.repositories.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Objects;
 import java.util.Optional;
 
 @RestController
@@ -29,6 +27,28 @@ public class UserController {
         if (userOptional.isEmpty()) return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
 
         return new ResponseEntity<User>(userOptional.get(), HttpStatus.OK);
+    }
+
+    // Create a new user
+    @PostMapping(path="/new/signup")
+    public ResponseEntity<User> createNewUser(@RequestBody User user) {
+        // Is the json data missing information
+        if (
+                Objects.isNull(user.getName()) || Objects.isNull(user.getCity()) ||
+                Objects.isNull(user.getState()) || Objects.isNull(user.getZipcode()) ||
+                Objects.isNull(user.getIsPeanutAllergic()) || Objects.isNull(user.getIsEggAllergic()) ||
+                Objects.isNull(user.getIsDairyAllergic())
+        ) {
+            return new ResponseEntity<User>(HttpStatus.BAD_REQUEST);
+        }
+
+        // Is there a user with the same username
+        if (this.userRepository.existsUserByName(user.getName())) {
+            return new ResponseEntity<User>(HttpStatus.CONFLICT);
+        }
+
+        // Save the new user to the database
+        return new ResponseEntity<User>(this.userRepository.save(user), HttpStatus.CREATED);
     }
 
 }

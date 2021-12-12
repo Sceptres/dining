@@ -5,12 +5,15 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.text.DecimalFormat;
 
 
 @Entity
 @Table(name="RESTAURANTS")
 @JsonInclude(value= JsonInclude.Include.NON_NULL)
 public class Restaurant {
+
+    private final static DecimalFormat df = new DecimalFormat("###.##");
 
     // Id
     @Id
@@ -46,19 +49,28 @@ public class Restaurant {
     // Allergy rating fields
     // Peanut allergy rating
     @Getter
-    @Setter
     @Column(name="PEANUT")
     private Float peanut;
 
     // Egg allergy rating
     @Getter
-    @Setter
     @Column(name="EGG")
     private Float egg;
 
     //Dairy allergy rating
     @Getter
-    @Setter
     @Column(name="DAIRY")
     private Float dairy;
+
+    public void setPeanut(Float peanut) {
+        this.peanut = Float.valueOf(Restaurant.df.format(peanut));
+    }
+
+    public void setEgg(Float egg) {
+        this.egg = Float.valueOf(Restaurant.df.format(egg));
+    }
+
+    public void setDairy(Float dairy) {
+        this.dairy = Float.valueOf(Restaurant.df.format(dairy));
+    }
 }

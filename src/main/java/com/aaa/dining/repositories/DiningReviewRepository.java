@@ -8,5 +8,6 @@ import java.util.Optional;
 
 public interface DiningReviewRepository extends CrudRepository<DiningReview, Integer> {
     Optional<DiningReview> findById(Long id);
+    boolean existsDiningReviewByNameAndRestaurantId(String name, Long restaurantId);
     List<DiningReview> findByRestaurantIdAndStatus(Long restaurantId, boolean status);
 }

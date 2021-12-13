@@ -10,4 +10,5 @@ public interface DiningReviewRepository extends CrudRepository<DiningReview, Int
     Optional<DiningReview> findById(Long id);
     boolean existsDiningReviewByNameAndRestaurantId(String name, Long restaurantId);
     List<DiningReview> findByRestaurantIdAndStatus(Long restaurantId, boolean status);
+    List<DiningReview> findByStatus(boolean status);
 }

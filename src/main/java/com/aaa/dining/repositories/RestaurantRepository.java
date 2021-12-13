@@ -9,6 +9,7 @@ import java.util.Optional;
 
 public interface RestaurantRepository extends CrudRepository<Restaurant, Integer> {
     Optional<Restaurant> findById(Long id);
+    boolean existsById(Long id);
     boolean existsRestaurantByNameAndZipcode(String name, String zipcode);
     List<Restaurant> findByZipcode(String zipcode);
     List<Restaurant> findByPeanutIsNotNullOrderByPeanutDesc();

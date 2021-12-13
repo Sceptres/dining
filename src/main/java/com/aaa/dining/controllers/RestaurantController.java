@@ -1,12 +1,14 @@
 package com.aaa.dining.controllers;
 
 import com.aaa.dining.entities.Restaurant;
+import com.aaa.dining.exceptions.QueryNotSupportedException;
 import com.aaa.dining.repositories.DiningReviewRepository;
 import com.aaa.dining.repositories.RestaurantRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -56,5 +58,23 @@ public class RestaurantController {
 
         // Save the new restaurant
         return new ResponseEntity<Restaurant>(this.restaurantRepository.save(restaurant), HttpStatus.CREATED);
+    }
+
+    // Searches restaurants by zipcode and specific allergy
+    @GetMapping(path="/search")
+    public ResponseEntity<List<Restaurant>> searchRestaurants(
+            @RequestParam(name="zipcode", required = false) String zipcode,
+            @RequestParam(name="allergy", required = false) String allergy
+    ) throws QueryNotSupportedException {
+        if (Objects.nonNull(zipcode) && Objects.nonNull(allergy)) { // Search by zipcode and allergy
+            return new ResponseEntity<>(this.restaurantRepository.findByZipcodeAndAllergyDesc(zipcode, allergy), HttpStatus.OK);
+        } else if (Objects.nonNull(zipcode)) { // Search only by zipcode
+            return new ResponseEntity<>(this.restaurantRepository.findByZipcode(zipcode), HttpStatus.OK);
+        } else if (Objects.nonNull(allergy)) { // Search only by allergy
+            return new ResponseEntity<>(this.restaurantRepository.findByAllergyDesc(allergy), HttpStatus.OK);
+        }
+
+        // Is the input invalid
+        throw new QueryNotSupportedException("Missing required search fields!");
     }
 }

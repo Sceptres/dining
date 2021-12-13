@@ -53,7 +53,7 @@ public class DiningReview {
     @Getter
     @Setter
     @Column(name="COMMENT")
-    private String comment;
+    private String comment = "";
 
     @Getter
     @Setter

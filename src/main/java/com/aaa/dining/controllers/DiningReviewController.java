@@ -1,6 +1,7 @@
 package com.aaa.dining.controllers;
 
 import com.aaa.dining.entities.DiningReview;
+import com.aaa.dining.entities.Restaurant;
 import com.aaa.dining.repositories.DiningReviewRepository;
 import com.aaa.dining.repositories.RestaurantRepository;
 import com.aaa.dining.repositories.UserRepository;
@@ -27,6 +28,12 @@ public class DiningReviewController {
         this.diningReviewRepository = diningReviewRepository;
         this.restaurantRepository = restaurantRepository;
         this.userRepository = userRepository;
+    }
+
+    // Get all dining reviews
+    @GetMapping
+    public ResponseEntity<Iterable<DiningReview>> getAllDiningReviews() {
+        return new ResponseEntity<Iterable<DiningReview>>(this.diningReviewRepository.findAll(), HttpStatus.OK);
     }
 
     // Gets a dining review given the database id

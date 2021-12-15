@@ -2,7 +2,6 @@ package com.aaa.dining.controllers;
 
 import com.aaa.dining.entities.Restaurant;
 import com.aaa.dining.exceptions.QueryNotSupportedException;
-import com.aaa.dining.repositories.DiningReviewRepository;
 import com.aaa.dining.repositories.RestaurantRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,14 +16,9 @@ import java.util.Optional;
 public class RestaurantController {
 
     private final RestaurantRepository restaurantRepository;
-    private final DiningReviewRepository diningReviewRepository;
 
-    public RestaurantController(
-            final RestaurantRepository restaurantRepository,
-            final DiningReviewRepository diningReviewRepository
-    ) {
+    public RestaurantController(final RestaurantRepository restaurantRepository) {
         this.restaurantRepository = restaurantRepository;
-        this.diningReviewRepository = diningReviewRepository;
     }
 
     // Get all restaurants

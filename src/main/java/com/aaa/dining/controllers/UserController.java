@@ -19,6 +19,11 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
+    // Get all users
+    public ResponseEntity<Iterable<User>> getAllUsers() {
+        return new ResponseEntity<Iterable<User>>(this.userRepository.findAll(), HttpStatus.OK);
+    }
+
     // Returns the user provided the user's display name
     @GetMapping(path="/{username}")
     public ResponseEntity<User> getUser(@PathVariable("username") String username) {

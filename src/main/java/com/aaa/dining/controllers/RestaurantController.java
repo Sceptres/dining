@@ -27,6 +27,12 @@ public class RestaurantController {
         this.diningReviewRepository = diningReviewRepository;
     }
 
+    // Get all restaurants
+    @GetMapping
+    public ResponseEntity<Iterable<Restaurant>> getAllRestaurants() {
+        return new ResponseEntity<Iterable<Restaurant>>(this.restaurantRepository.findAll(), HttpStatus.OK);
+    }
+
     // Returns the restaurant provided the correct id
     @GetMapping(path="/{restaurantId}")
     public ResponseEntity<Restaurant> getRestaurant(@PathVariable(name="restaurantId") Long id) {

@@ -55,7 +55,8 @@ public class DiningReviewController {
         if (
                 Objects.isNull(diningReview.getName()) || Objects.isNull(diningReview.getRestaurantId()) ||
                 Objects.isNull(diningReview.getPeanutScore()) || Objects.isNull(diningReview.getEggScore()) ||
-                Objects.isNull(diningReview.getDairyScore()) || Objects.nonNull(diningReview.getStatus())
+                Objects.isNull(diningReview.getDairyScore()) || Objects.nonNull(diningReview.getStatus()) ||
+                Objects.nonNull(diningReview.getId())
         ) {
             return new ResponseEntity<DiningReview>(HttpStatus.BAD_REQUEST);
         }

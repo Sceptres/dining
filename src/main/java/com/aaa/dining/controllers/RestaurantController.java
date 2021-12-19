@@ -46,7 +46,7 @@ public class RestaurantController {
             Objects.isNull(restaurant.getName()) || Objects.isNull(restaurant.getCity()) ||
             Objects.isNull(restaurant.getState()) || Objects.isNull(restaurant.getZipcode()) ||
             Objects.nonNull(restaurant.getPeanut()) || Objects.nonNull(restaurant.getEgg()) ||
-            Objects.nonNull(restaurant.getDairy())
+            Objects.nonNull(restaurant.getDairy()) || Objects.nonNull(restaurant.getId())
         ) {
             return new ResponseEntity<Restaurant>(HttpStatus.BAD_REQUEST);
         }

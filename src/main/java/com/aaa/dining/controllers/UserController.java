@@ -42,7 +42,7 @@ public class UserController {
                 Objects.isNull(user.getName()) || Objects.isNull(user.getCity()) ||
                 Objects.isNull(user.getState()) || Objects.isNull(user.getZipcode()) ||
                 Objects.isNull(user.getIsPeanutAllergic()) || Objects.isNull(user.getIsEggAllergic()) ||
-                Objects.isNull(user.getIsDairyAllergic())
+                Objects.isNull(user.getIsDairyAllergic()) || Objects.nonNull(user.getId())
         ) {
             return new ResponseEntity<User>(HttpStatus.BAD_REQUEST);
         }

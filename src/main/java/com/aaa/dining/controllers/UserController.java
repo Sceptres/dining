@@ -20,6 +20,7 @@ public class UserController {
     }
 
     // Get all users
+    @GetMapping
     public ResponseEntity<Iterable<User>> getAllUsers() {
         return new ResponseEntity<Iterable<User>>(this.userRepository.findAll(), HttpStatus.OK);
     }

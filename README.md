@@ -1,7 +1,9 @@
 # Dining
-My portfolio project of the Codecademy Spring framework course. The goal is to build an API that can be used to rate different 
+My portfolio project for the Codecademy Spring framework course. The goal is to build an API that can be used to rate different 
 restaurants' ability to handle different types of allergies. In this project peanut, egg and dairy allergies are only taken into account.
 
+## Setting up and running the project
+After downloading/forking the code, you can configure the server through the `application.properties` file found under the `resources` folder. To run the project open a terminal and change the directory to the project's directory and run the command `mvn spring-boot:run`.
 
 ## Restaurants
 All the http requests that can be made to the /restaurants endpoint. 
